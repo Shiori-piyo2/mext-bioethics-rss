@@ -8,15 +8,10 @@ response.encoding = response.apparent_encoding
 
 soup = BeautifulSoup(response.text, "html.parser")
 
-text = soup.get_text("\n")
-
-lines = text.splitlines()
+lines = soup.get_text("\n").splitlines()
 
 for line in lines:
     line = line.strip()
 
-    if "令和8年8月27日" in line:
-        print("FOUND:", line)
-
-    if "令和7年12月26日" in line:
-        print("FOUND:", line)
+    if "更新しました" in line:
+        print("NEWS:", line)
