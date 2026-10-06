@@ -1,7 +1,12 @@
 import requests
 
-url = "https://www.mext.go.jp/a_menu/lifescience/bioethics/seimeikagaku_igaku.html"
+html = requests.get(
+    "https://www.mext.go.jp/a_menu/lifescience/bioethics/seimeikagaku_igaku.html",
+    timeout=30
+).text
 
-response = requests.get(url, timeout=30)
+keyword = "新着情報"
 
-print(response.text[:5000])
+pos = html.find(keyword)
+
+print(html[max(0, pos-1000):pos+3000])
