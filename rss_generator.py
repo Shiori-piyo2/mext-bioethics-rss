@@ -10,18 +10,13 @@ soup = BeautifulSoup(response.text, "html.parser")
 
 text = soup.get_text("\n")
 
-for keyword in [
-    "令和8年8月27日",
-    "令和7年12月26日",
-    "更新しました"
-]:
-    pos = text.find(keyword)
+lines = text.splitlines()
 
-    print("=" * 60)
-    print(keyword)
-    print("=" * 60)
+for line in lines:
+    line = line.strip()
 
-    if pos != -1:
-        print(text[max(0, pos-500):pos+2000])
-    else:
-        print("見つからない")
+    if "令和8年8月27日" in line:
+        print("FOUND:", line)
+
+    if "令和7年12月26日" in line:
+        print("FOUND:", line)
