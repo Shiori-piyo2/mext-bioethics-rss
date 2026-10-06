@@ -25,4 +25,3 @@ jobs:
 
       - name: Run script
         run: python rss_generator.py
-``
